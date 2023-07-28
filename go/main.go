@@ -10,23 +10,44 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
 
 	// Add your desired HTML content
-	fmt.Fprintf(w, "<!DOCTYPE html>")
-	fmt.Fprintf(w, "<html>")
-	fmt.Fprintf(w, "<head>")
-	fmt.Fprintf(w, "<title>My Go Webpage</title>")
-	fmt.Fprintf(w, "<style>")
-	// Add your CSS code here
-	fmt.Fprintf(w, "body { font-family: Arial, sans-serif; }")
-	fmt.Fprintf(w, "h1 { color: #007bff; }")
-	fmt.Fprintf(w, "p { color: #333; }")
-	fmt.Fprintf(w, "</style>")
-	fmt.Fprintf(w, "</head>")
-	fmt.Fprintf(w, "<body>")
-	fmt.Fprintf(w, "<h1>Hello World!, This Go application runs on Triggr</h1>")
-	fmt.Fprintf(w, "<p>Welcome to my webpage.</p>")
-	fmt.Fprintf(w, "<p>This is a sample Go application's webpage.</p>")
-	fmt.Fprintf(w, "</body>")
-	fmt.Fprintf(w, "</html>")
+	htmlContent := `
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Go Webpage</title>
+  <style>
+    /* Add your CSS code here */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e6f7ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    h1 {
+      color: #007bff;
+    }
+
+    p {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1>Hello World!, This Go application runs on Triggr</h1>
+    <p>Welcome to my webpage.</p>
+    <p>This is a sample Go application's webpage.</p>
+  </div>
+</body>
+</html>
+`
+
+	// Write the HTML content to the response
+	fmt.Fprintf(w, htmlContent)
 }
 
 func main() {
